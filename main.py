@@ -9,8 +9,12 @@ input_name = "infile"
 with open(out_file_name, 'w') as f:
     f.write("sourcenode 0 0\n")
     f.write("num node {}\n".format(buffer_num*2))
+    flag = 0
     for i in range(0, buffer_num*2):
-        star_buffer_node =  star_buffer_node + 450000
+        if flag == 2:
+            star_buffer_node =  star_buffer_node + 450000
+            flag =0
+        flag = flag + 1
         f.write('{} {} {}\n'.format(i+2, 0, star_buffer_node))
     f.write("num sinknode {}\n".format(1))
     f.write('{} {}\n'.format(1,1))
